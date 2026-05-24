@@ -26,10 +26,17 @@ export async function createClient() {
   )
 }
 
+// Uses service_role when available (bypasses RLS), falls back to anon key
 export function createServiceClient() {
+  const key =
+    process.env.SUPABASE_SERVICE_ROLE_KEY?.startsWith('PENDING') ||
+    !process.env.SUPABASE_SERVICE_ROLE_KEY
+      ? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      : process.env.SUPABASE_SERVICE_ROLE_KEY
+
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    key,
     {
       cookies: { getAll: () => [], setAll: () => {} },
     }
