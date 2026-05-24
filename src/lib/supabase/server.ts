@@ -6,7 +6,7 @@ export async function createClient() {
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
       cookies: {
         getAll() {
@@ -26,13 +26,13 @@ export async function createClient() {
   )
 }
 
-// Uses service_role when available (bypasses RLS), falls back to anon key
+// Uses sb_secret key when available (bypasses RLS), falls back to publishable key
 export function createServiceClient() {
+  const secret = process.env.SUPABASE_SECRET_KEY
   const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY?.startsWith('PENDING') ||
-    !process.env.SUPABASE_SERVICE_ROLE_KEY
-      ? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      : process.env.SUPABASE_SERVICE_ROLE_KEY
+    !secret || secret.startsWith('PENDING')
+      ? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
+      : secret
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
