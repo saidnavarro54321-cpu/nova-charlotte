@@ -14,3 +14,10 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
     Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+# Serve the original Nova HTML at root — fallback if Next.js redirect fails
+[[redirects]]
+  from = "/"
+  to = "/nova-site.html"
+  status = 200
+  force = false

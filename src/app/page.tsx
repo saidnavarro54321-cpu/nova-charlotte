@@ -1,5 +1,5 @@
-// Root handled by next.config.ts rewrite → public/nova-site.html
-// This page is never reached in production
+import { redirect } from 'next/navigation'
+
 export default function Page() {
-  return null
+  redirect('/nova-site.html')
 }
