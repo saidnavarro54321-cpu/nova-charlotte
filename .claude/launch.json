@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nova-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\Owner\\AppData\\Local\\nodejs\\node_modules\\npm\\bin\\npm-cli.js", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}
