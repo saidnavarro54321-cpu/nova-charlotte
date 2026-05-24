@@ -26,9 +26,9 @@ export async function createClient() {
   )
 }
 
-// Uses sb_secret key when available (bypasses RLS), falls back to publishable key
+// Uses service_role key (bypasses RLS), falls back to publishable key if not set
 export function createServiceClient() {
-  const secret = process.env.SUPABASE_SECRET_KEY
+  const secret = process.env.SUPABASE_SERVICE_ROLE_KEY
   const key =
     !secret || secret.startsWith('PENDING')
       ? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!

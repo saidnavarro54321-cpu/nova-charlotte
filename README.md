@@ -29,7 +29,7 @@ Edita `.env.local` con tus credenciales:
 |---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase > Settings > API |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase > Settings > API (`sb_publishable_xxx`) |
-| `SUPABASE_SECRET_KEY` | Supabase > Settings > API (`sb_secret_xxx`) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase > Settings > API (JWT `eyJ...`) |
 | `STRIPE_SECRET_KEY` | Stripe Dashboard > API Keys |
 | `STRIPE_PUBLISHABLE_KEY` | Stripe Dashboard > API Keys |
 | `RESEND_API_KEY` | Resend > API Keys |
